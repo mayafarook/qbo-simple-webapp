@@ -5,21 +5,13 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [uploadStatus, setUploadStatus] = useState('');
 
-  const handleDownload = async () => {
-    const res = await fetch('/api/qbo/download');
-    const json = await res.json();
-    setData(json.data);
-  };
 
-  const handleUpload = async () => {
-    const res = await fetch('/api/qbo/upload', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: 'New Customer', id: 123 })
-    });
-    const json = await res.json();
-    setUploadStatus(json.status);
-  };
+  const res = await fetch('/api/qbo', { method: 'GET' }); // download
+const res = await fetch('/api/qbo', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ id: 123, name: 'Test' }),
+}); // upload
 
   return (
     <div style={{ padding: 20 }}>
