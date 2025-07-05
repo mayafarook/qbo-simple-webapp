@@ -1,11 +1,11 @@
-
 {
   "builds": [
-    { "src": "pages/index.js", "use": "@vercel/next" },
+    { "src": "package.json", "use": "@vercel/next" },
     { "src": "api/qbo.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/qbo/(.*)", "dest": "api/qbo.js" },
-    { "src": "/(.*)", "dest": "pages/index.js" }
+    { "src": "/api/qbo", "dest": "/api/qbo.js" },
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
+
